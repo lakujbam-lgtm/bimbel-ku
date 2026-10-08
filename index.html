@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bimbel Gratis - Platform Belajar Interaktif</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" onclick="switchTab('home')" class="flex items-center gap-2 font-bold text-xl text-brand-600 dark:text-brand-500">
+        <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+        <span>Bimbel<span class="text-slate-800 dark:text-white">Gratis</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+        <button onclick="switchTab('home')" id="nav-home" class="nav-btn text-brand-600 dark:text-brand-500 font-semibold">Beranda</button>
+        <button onclick="switchTab('fundamental')" id="nav-fundamental" class="nav-btn text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500">Fundamental</button>
+        <button onclick="switchTab('tryout')" id="nav-tryout" class="nav-btn text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500">Tryout</button>
+      </nav>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-3">
+        <!-- Dark Mode Toggle -->
+        <button id="theme-toggle" onclick="toggleDarkMode()" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i data-lucide="moon" id="theme-moon" class="w-5 h-5 hidden"></i>
+          <i data-lucide="sun" id="theme-sun" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Daftar Button -->
+        <button onclick="openRegisterModal()" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm transition">
+          Daftar Gratis
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-600 dark:text-slate-300">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-2">
+      <button onclick="switchTab('home'); toggleMobileMenu()" class="block w-full text-left py-2 font-medium">Beranda</button>
+      <button onclick="switchTab('fundamental'); toggleMobileMenu()" class="block w-full text-left py-2 font-medium">Fundamental</button>
+      <button onclick="switchTab('tryout'); toggleMobileMenu()" class="block w-full text-left py-2 font-medium">Tryout</button>
+      <button onclick="openRegisterModal(); toggleMobileMenu()" class="w-full mt-2 py-2 text-center text-white bg-brand-600 rounded-lg font-medium">Daftar Gratis</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow">
+    
+    <!-- SECTION 1: HOME (BERANDA & VISI MISI) -->
+    <section id="tab-home" class="tab-content">
+      <!-- Hero Banner -->
+      <div class="relative overflow-hidden bg-gradient-to-b from-brand-50 to-transparent dark:from-slate-800/50 dark:to-transparent py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300 mb-4">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 100% Gratis Tanpa Biaya Tersembunyi
+          </span>
+          <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
+            Pendidikan Berkualitas untuk <span class="text-brand-600 dark:text-brand-500">Semua Anak Bangsa</span>
+          </h1>
+          <p class="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-300 mb-8">
+            Akses video materi dasar interaktif, pembahasan lengkap, dan tes uji coba (tryout) standar nasional tanpa dipungut biaya sepeser pun.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <button onclick="switchTab('fundamental')" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-lg transition flex items-center gap-2">
+              Mulai Belajar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button onclick="switchTab('tryout')" class="px-6 py-3 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700 font-semibold rounded-xl transition flex items-center gap-2">
+              Ikuti Tryout <i data-lucide="file-text" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visi & Misi Section -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Visi & Misi Kami</h2>
+          <p class="text-slate-600 dark:text-slate-400">Pondasi utama dalam membangun platform bimbingan belajar terbuka.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Visi Card -->
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden">
+            <div class="w-12 h-12 bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 rounded-xl flex items-center justify-center mb-6">
+              <i data-lucide="eye" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Visi</h3>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+              Mewujudkan kesetaraan akses pendidikan berkualitas tinggi bagi seluruh pelajar di Indonesia melalui teknologi digital yang inklusif, mudah diakses, dan bebas biaya secara berkelanjutan.
+            </p>
+          </div>
+
+          <!-- Misi Card -->
+          <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+            <div class="w-12 h-12 bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 rounded-xl flex items-center justify-center mb-6">
+              <i data-lucide="target" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Misi</h3>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-300">
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i>
+                <span>Menyediakan kurikulum pembelajaran konseptual dan mudah dipahami.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i>
+                <span>Menghadirkan latihan soal dan simulasi Tryout berstandar ujian nasional/SNBT.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i>
+                <span>Mendukung kemandirian belajar siswa kapan saja dan di mana saja.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features List -->
+      <div class="bg-slate-100 dark:bg-slate-800/50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+              <i data-lucide="play-circle" class="w-8 h-8 text-brand-600 mb-4"></i>
+              <h4 class="font-bold text-lg mb-2">Video Pembelajaran</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Penjelasan materi terstruktur berdurasi ringkas dan padat.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+              <i data-lucide="file-question" class="w-8 h-8 text-brand-600 mb-4"></i>
+              <h4 class="font-bold text-lg mb-2">Simulasi Tryout</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Uji kemampuan dengan fitur timer instan dan pembahasan.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+              <i data-lucide="award" class="w-8 h-8 text-brand-600 mb-4"></i>
+              <h4 class="font-bold text-lg mb-2">Evaluasi Hasil</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Analisis nilai otomatis setelah menyelesaikan latihan soal.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+              <i data-lucide="users" class="w-8 h-8 text-brand-600 mb-4"></i>
+              <h4 class="font-bold text-lg mb-2">Akses Terbuka</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Dapat diakses oleh SD, SMP, SMA, maupun umum.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: FUNDAMENTAL KATALOG -->
+    <section id="tab-fundamental" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <h2 class="text-3xl font-bold">Katalog Fundamental</h2>
+          <p class="text-slate-600 dark:text-slate-400">Kuasai konsep-konsep dasar berbagai mata pelajaran utama.</p>
+        </div>
+        <!-- Search & Filter -->
+        <div class="relative w-full md:w-72">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="search-fundamental" oninput="renderFundamental()" placeholder="Cari materi dasar..." class="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+        </div>
+      </div>
+
+      <!-- Grid Cards Fundamental -->
+      <div id="fundamental-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: TRYOUT KATALOG & TEST -->
+    <section id="tab-tryout" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div id="tryout-list-view">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold">Katalog Tryout</h2>
+          <p class="text-slate-600 dark:text-slate-400">Uji kesiapan Anda dengan simulasi soal berbatas waktu.</p>
+        </div>
+
+        <!-- Grid Cards Tryout -->
+        <div id="tryout-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- TRYOUT ACTIVE QUIZ VIEW (Hidden by default) -->
+      <div id="tryout-quiz-view" class="hidden max-w-3xl mx-auto bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-lg">
+        <!-- Header Quiz -->
+        <div class="flex justify-between items-center pb-4 mb-6 border-b border-slate-200 dark:border-slate-700">
+          <div>
+            <span id="quiz-badge" class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">TPS - Penalaran</span>
+            <h3 id="quiz-title" class="text-xl font-bold">Tryout Matematika dasar</h3>
+          </div>
+          <div class="flex items-center gap-2 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-3 py-1.5 rounded-lg font-mono font-bold">
+            <i data-lucide="clock" class="w-4 h-4"></i>
+            <span id="quiz-timer">15:00</span>
+          </div>
+        </div>
+
+        <!-- Question Body -->
+        <div id="quiz-body">
+          <div class="mb-2 text-sm text-slate-500">Pertanyaan <span id="quiz-current-num">1</span> dari <span id="quiz-total-num">5</span></div>
+          <p id="quiz-question" class="text-lg font-medium mb-6">Isi Soal Pertanyaan...</p>
+
+          <div id="quiz-options" class="space-y-3 mb-8">
+            <!-- Options rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Result View (Hidden during quiz) -->
+        <div id="quiz-result" class="hidden text-center py-6">
+          <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="check-circle" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Tryout Selesai!</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-6">Berikut adalah skor performa Anda:</p>
+          <div class="text-5xl font-extrabold text-brand-600 mb-6" id="quiz-score">0 / 100</div>
+
+          <!-- Discussions / Pembahasan -->
+          <div class="text-left bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 mb-6 max-h-60 overflow-y-auto" id="quiz-explanations">
+            <h4 class="font-bold mb-2 text-sm uppercase tracking-wide text-slate-500">Pembahasan Ringkas:</h4>
+            <!-- Rendered by JS -->
+          </div>
+
+          <button onclick="closeQuiz()" class="px-6 py-2.5 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition">
+            Kembali ke Katalog
+          </button>
+        </div>
+
+        <!-- Footer Quiz Navigation -->
+        <div id="quiz-footer" class="flex justify-between items-center pt-4 border-t border-slate-200 dark:border-slate-700">
+          <button id="btn-prev" onclick="navigateQuiz(-1)" class="px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-700">Kembali</button>
+          <button id="btn-next" onclick="navigateQuiz(1)" class="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-700">Lanjut</button>
+          <button id="btn-submit" onclick="submitQuiz()" class="hidden px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700">Selesaikan Tryout</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: PEMBELAJARAN VIDEO (EMBED YOUTUBE) -->
+  <div id="video-modal" class="fixed inset-0 bg-slate-900/70 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-800 w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center p-4 border-b border-slate-200 dark:border-slate-700">
+        <h3 id="modal-video-title" class="font-bold text-lg">Judul Video</h3>
+        <button onclick="closeVideoModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div class="relative aspect-video bg-black">
+        <iframe id="modal-video-frame" class="w-full h-full" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="p-4 bg-slate-50 dark:bg-slate-900/50 flex justify-end">
+        <button onclick="closeVideoModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-sm font-medium">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: FORM PENDAFTARAN -->
+  <div id="register-modal" class="fixed inset-0 bg-slate-900/70 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-800 w-full max-w-md p-6 rounded-2xl shadow-2xl">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-bold text-xl">Daftar Murid Baru</h3>
+        <button onclick="closeRegisterModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <form onsubmit="handleRegister(event)" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
+          <input type="text" required placeholder="Contoh: Budi Santoso" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Jenjang Pendidikan</label>
+          <select class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <option>SD / Sederajat</option>
+            <option>SMP / Sederajat</option>
+            <option>SMA / SMK / UTBK</option>
+            <option>Umum</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Nomor WhatsApp</label>
+          <input type="tel" required placeholder="08123456789" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+        </div>
+        <button type="submit" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium transition">
+          Konfirmasi Pendaftaran
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-auto py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p>© 2026 Bimbel Gratis Interaktif. Dibuat untuk pendidikan Indonesia yang inklusif.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- DATA KATALOG FUNDAMENTAL ---
+    const fundamentalData = [
+      {
+        id: 1,
+        subject: "Matematika",
+        title: "Aljabar Dasar & Persamaan Linear",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Ganti ID video youtube di sini
+        desc: "Mempelajari variabel, koefisien, dan metode penyelesaian persamaan satu variabel.",
+        badge: "Dasar"
+      },
+      {
+        id: 2,
+        subject: "Bahasa Inggris",
+        title: "Mastering Basic Tenses",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        desc: "Pemahaman dasar Simple Present, Past Tense, dan Future Tense beserta contohnya.",
+        badge: "Dasar"
+      },
+      {
+        id: 3,
+        subject: "Fisika / IPA",
+        title: "Hukum Newton & Gaya Kinematika",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        desc: "Konsep Hukum Newton I, II, III dan penerapannya pada kehidupan sehari-hari.",
+        badge
