@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BimbelKu - Beranda</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head><body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans"><header class="sticky top-0 z-50 w-full backdrop-blur border-b border-slate-800 bg-slate-900/90">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative">
+<!-- Logo BimbelKu -->
+<button class="flex items-center gap-2 font-bold text-xl text-sky-500 focus:outline-none" onclick="bukaTab('tab-home')">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+<path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+</svg>
+<span>Bimbel<span class="text-white">Ku</span></span>
+</button>
+<!-- Tombol Garis Tiga / Hamburger Menu -->
+<button class="p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg focus:outline-none transition" id="btn-hamburger" onclick="toggleMenu()">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="hidden absolute top-16 right-4 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl p-2 flex flex-col gap-1 z-50" id="mobile-menu">
+<button class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2" onclick="bukaTab('tab-home'); toggleMenu();">
+          🏠 Beranda
+        </button>
+<button class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2" onclick="bukaTab('tab-fundamental'); toggleMenu();">
+          📚 Fundamental <span class="icon-kunci">🔒</span>
+</button>
+<button class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2" onclick="bukaTab('tab-subtes'); toggleMenu();">
+          🎯 Subtes UTBK <span class="icon-kunci">🔒</span>
+</button>
+<button class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2" onclick="bukaTab('tab-tryout'); toggleMenu();">
+          📝 Tryout
+        </button>
+<div class="border-t border-slate-700 my-1"></div>
+<button class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-sky-400 font-semibold hover:bg-sky-600 hover:text-white transition flex items-center gap-2" id="btn-login-menu" onclick="window.location.href='login.html'; toggleMenu();">
+          🔑 Login
+        </button>
+<button class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-emerald-400 font-semibold hover:bg-emerald-600 hover:text-white transition flex items-center gap-2" id="btn-register-menu" onclick="window.location.href='daftar.html'; toggleMenu();">
+          📝 Daftar
+        </button>
+<button class="hidden w-full text-left px-4 py-2.5 rounded-lg text-sm text-rose-400 font-semibold hover:bg-rose-600 hover:text-white transition flex items-center gap-2" id="btn-logout-menu" onclick="logout(); toggleMenu();">
+          🚪 Logout
+        </button>
+</div>
+</div>
+</header><main class="flex-grow"><section class="tab-utama" id="tab-home">
+<!-- Hero Section -->
+<div class="relative overflow-hidden bg-gradient-to-b from-sky-950/40 to-transparent py-16 sm:py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-sky-950 text-sky-300 border border-sky-800 mb-6">
+            ✨ 100% Gratis Tanpa Biaya Tersembunyi
+          </span>
+<h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+            Pendidikan Berkualitas untuk <br class="hidden sm:inline"/>
+<span class="text-sky-400">Semua Anak Bangsa</span>
+</h1>
+<p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-10 leading-relaxed">
+            Akses video materi dasar interaktif, pembahasan lengkap, dan latihan soal standar nasional tanpa dipungut biaya sepeser pun di BimbelKu.
+          </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="px-7 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-600/30 transition duration-200 flex items-center gap-2" onclick="bukaTab('tab-subtes')">
+              Mulai Belajar UTBK
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</button>
+<button class="px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold rounded-xl transition duration-200 flex items-center gap-2" onclick="bukaTab('tab-tryout')">
+              Ikuti Tryout 
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- SEKSI HITUNG MUNDUR UTBK -->
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-slate-800">
+<div class="bg-slate-800/80 rounded-3xl border border-slate-700/80 p-6 sm:p-8 shadow-xl text-center">
+<h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+            Hitung Mundur Hari-H UTBK
+          </h2>
+<div class="flex flex-wrap justify-center items-center gap-2 text-xs sm:text-sm text-slate-400 mb-8 font-medium">
+<span class="flex items-center gap-1">📅 Senin, 26 April 2027</span>
+<span>•</span>
+<span class="flex items-center gap-1">🕒 Sesi 1 Pagi (07.00 WIB)</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+<div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-5 flex flex-col items-center justify-center">
+<span class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" id="cd-days">00</span>
+<span class="text-xs font-bold text-slate-400 tracking-wider mt-2">HARI</span>
+<div class="w-8 h-1 bg-rose-500/80 rounded-full mt-3"></div>
+</div>
+<div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-5 flex flex-col items-center justify-center">
+<span class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" id="cd-hours">00</span>
+<span class="text-xs font-bold text-slate-400 tracking-wider mt-2">JAM</span>
+<div class="w-8 h-1 bg-orange-400/80 rounded-full mt-3"></div>
+</div>
+<div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-5 flex flex-col items-center justify-center">
+<span class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" id="cd-minutes">00</span>
+<span class="text-xs font-bold text-slate-400 tracking-wider mt-2">MENIT</span>
+<div class="w-8 h-1 bg-amber-400/80 rounded-full mt-3"></div>
+</div>
+<div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-5 flex flex-col items-center justify-center">
+<span class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" id="cd-seconds">00</span>
+<span class="text-xs font-bold text-slate-400 tracking-wider mt-2">DETIK</span>
+<div class="w-8 h-1 bg-yellow-400/80 rounded-full mt-3"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visi & Misi Section -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-800">
+<div class="text-center mb-12">
+<h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Visi &amp; Misi Kami</h2>
+<p class="text-slate-400 text-sm">Pondasi utama platform bimbingan belajar terbuka BimbelKu.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700/60">
+<div class="w-12 h-12 bg-sky-950 text-sky-400 rounded-xl flex items-center justify-center mb-6 border border-sky-800">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3">Visi</h3>
+<p class="text-slate-300 leading-relaxed text-sm">
+              Mewujudkan kesetaraan akses pendidikan berkualitas tinggi bagi seluruh pelajar di Indonesia melalui teknologi digital yang inklusif, mudah diakses, dan bebas biaya secara berkelanjutan.
+            </p>
+</div>
+<div class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700/60">
+<div class="w-12 h-12 bg-sky-950 text-sky-400 rounded-xl flex items-center justify-center mb-6 border border-sky-800">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+</div>
+<h3 class="text-xl font-bold text-white mb-3">Misi</h3>
+<ul class="space-y-3 text-slate-300 text-sm">
+<li class="flex items-start gap-2.5"><span class="text-sky-400 font-bold">✓</span><span>Menyediakan kurikulum pembelajaran konseptual dan mudah dipahami.</span></li>
+<li class="flex items-start gap-2.5"><span class="text-sky-400 font-bold">✓</span><span>Menghadirkan latihan soal dan simulasi Tryout berstandar ujian nasional.</span></li>
+<li class="flex items-start gap-2.5"><span class="text-sky-400 font-bold">✓</span><span>Mendukung kemandirian belajar siswa kapan saja dan di mana saja.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section></main><div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden p-4" id="modal-notifikasi">
+<div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 sm:p-8 w-full max-w-sm shadow-2xl text-center relative transform transition-all">
+<div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border text-2xl" id="notif-icon-box">
+        🔑
+      </div>
+<h3 class="text-xl font-bold text-white mb-2" id="notif-judul">Pemberitahuan</h3>
+<p class="text-sm text-slate-300 mb-6 leading-relaxed" id="notif-pesan"></p>
+<button class="w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl text-sm transition shadow-lg shadow-sky-600/30" id="notif-btn-aksi" onclick="tutupModalNotifikasi()">
+        Mengerti
+      </button>
+</div>
+</div><div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden p-4" id="modal-login">
+<div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 sm:p-8 w-full max-w-md shadow-2xl relative">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold" onclick="tutupModalLogin()">×</button>
+<div class="text-center mb-6">
+<h3 class="text-2xl font-bold text-white">Login BimbelKu</h3>
+<p class="text-xs text-slate-400 mt-1">Silakan masuk untuk mengakses materi terproteksi</p>
+</div>
+<form class="space-y-4" onsubmit="prosesLogin(event)">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Username</label>
+<input class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-sky-500 transition" id="login-username" placeholder="Masukkan username" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+<input class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-sky-500 transition" id="login-password" placeholder="Masukkan password" required="" type="password"/>
+</div>
+<p class="text-xs text-rose-500 font-medium hidden text-center mt-2" id="login-error"></p>
+<button class="w-full py-3 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl transition text-sm shadow-lg shadow-sky-600/30" type="submit">
+          Masuk
+        </button>
+</form>
+<!-- MENU DAFTAR / PENGALIHAN KE REGISTER -->
+<div class="text-center mt-4 border-t border-slate-700/60 pt-4">
+<p class="text-xs text-slate-400">
+          Belum punya akun? 
+          <button class="text-sky-400 font-semibold hover:underline" onclick="pindahKeRegister()">Daftar sekarang</button>
+</p>
+</div>
+</div>
+</div><div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden p-4" id="modal-register">
+<div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 sm:p-8 w-full max-w-md shadow-2xl relative">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold" onclick="tutupModalRegister()">×</button>
+<div class="text-center mb-6">
+<h3 class="text-2xl font-bold text-white">Daftar Akun BimbelKu</h3>
+<p class="text-xs text-slate-400 mt-1">Buat username dan password baru kamu</p>
+</div>
+<form class="space-y-4" onsubmit="prosesRegister(event)">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Username Baru</label>
+<input class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500 transition" id="register-username" placeholder="Buat username" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+<input class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500 transition" id="register-password" placeholder="Buat password" required="" type="password"/>
+</div>
+<p class="text-xs text-rose-500 font-medium hidden text-center mt-2" id="register-error"></p>
+<button class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition text-sm shadow-lg shadow-emerald-600/30" type="submit">
+          Daftar Sekarang
+        </button>
+</form>
+<div class="text-center mt-4 border-t border-slate-700/60 pt-4">
+<p class="text-xs text-slate-400">
+          Sudah punya akun? 
+          <button class="text-emerald-400 font-semibold hover:underline" onclick="pindahKeLogin()">Login di sini</button>
+</p>
+</div>
+</div>
+</div><footer class="bg-slate-900 border-t border-slate-800 py-8 mt-auto">
+<div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-500">
+<p>© 2026 BimbelKu Interaktif. Dibuat untuk pendidikan Indonesia yang inklusif.</p>
+</div>
+</footer><script>
+    window.targetTabSetiapLogin = null;
+    window.notifCallback = null;
+
+    // Membaca daftar akun yang sudah didaftarkan
+    window.getRegisteredUsers = function() {
+      var users = localStorage.getItem('registeredUsers');
+      return users ? JSON.parse(users) : {};
+    };
+
+    window.isLoggedIn = function() {
+      return localStorage.getItem('isLoggedIn') === 'true';
+    };
+
+    window.updateUIByLoginStatus = function() {
+      var loggedIn = window.isLoggedIn();
+      var btnLogin = document.getElementById('btn-login-menu');
+      var btnRegister = document.getElementById('btn-register-menu');
+      var btnLogout = document.getElementById('btn-logout-menu');
+      var ikonKunci = document.querySelectorAll('.icon-kunci');
+
+      if (loggedIn) {
+        if (btnLogin) btnLogin.classList.add('hidden');
+        if (btnRegister) btnRegister.classList.add('hidden');
+        if (btnLogout) btnLogout.classList.remove('hidden');
+        ikonKunci.forEach(function(el) {
+          el.classList.add('hidden');
+        });
+      } else {
+        if (btnLogin) btnLogin.classList.remove('hidden');
+        if (btnRegister) btnRegister.classList.remove('hidden');
+        if (btnLogout) btnLogout.classList.add('hidden');
+        ikonKunci.forEach(function(el) {
+          el.classList.remove('hidden');
+        });
+      }
+    };
+
+    window.bukaModalNotifikasi = function(judul, pesan, tipe, callback) {
+      var modal = document.getElementById('modal-notifikasi');
+      var elJudul = document.getElementById('notif-judul');
+      var elPesan = document.getElementById('notif-pesan');
+      var iconBox = document.getElementById('notif-icon-box');
+      var btnAksi = document.getElementById('notif-btn-aksi');
+
+      if (!modal || !elJudul || !elPesan || !iconBox || !btnAksi) return;
+
+      elJudul.textContent = judul;
+      elPesan.textContent = pesan;
+      window.notifCallback = callback || null;
+
+      if (tipe === 'warning') {
+        iconBox.textContent = '🔒';
+        iconBox.className = 'w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border text-2xl bg-amber-950/60 border-amber-700 text-amber-400';
+        btnAksi.className = 'w-full py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-xl text-sm transition shadow-lg shadow-amber-600/30';
+      } else if (tipe === 'success') {
+        iconBox.textContent = '🎉';
+        iconBox.className = 'w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border text-2xl bg-emerald-950/60 border-emerald-700 text-emerald-400';
+        btnAksi.className = 'w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl text-sm transition shadow-lg shadow-emerald-600/30';
+      } else {
+        iconBox.textContent = 'ℹ️';
+        iconBox.className = 'w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border text-2xl bg-sky-950/60 border-sky-700 text-sky-400';
+        btnAksi.className = 'w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl text-sm transition shadow-lg shadow-sky-600/30';
+      }
+
+      modal.classList.remove('hidden');
+    };
+
+    window.tutupModalNotifikasi = function() {
+      var modal = document.getElementById('modal-notifikasi');
+      if (modal) modal.classList.add('hidden');
+      if (typeof window.notifCallback === 'function') {
+        var cb = window.notifCallback;
+        window.notifCallback = null;
+        cb();
+      }
+    };
+
+    window.bukaModalLogin = function(tabTujuan, presetUsername) {
+      if (tabTujuan) window.targetTabSetiapLogin = tabTujuan;
+      var modal = document.getElementById('modal-login');
+      var err = document.getElementById('login-error');
+      if (err) err.classList.add('hidden');
+      
+      if (presetUsername) {
+        document.getElementById('login-username').value = presetUsername;
+      }
+      
+      if (modal) modal.classList.remove('hidden');
+    };
+
+    window.tutupModalLogin = function() {
+      var modal = document.getElementById('modal-login');
+      if (modal) modal.classList.add('hidden');
+      window.targetTabSetiapLogin = null;
+    };
+
+    window.bukaModalRegister = function() {
+      var modal = document.getElementById('modal-register');
+      var err = document.getElementById('register-error');
+      if (err) err.classList.add('hidden');
+      if (modal) modal.classList.remove('hidden');
+    };
+
+    window.tutupModalRegister = function() {
+      var modal = document.getElementById('modal-register');
+      if (modal) modal.classList.add('hidden');
+    };
+
+    window.pindahKeRegister = function() {
+      tutupModalLogin();
+      bukaModalRegister();
+    };
+
+    window.pindahKeLogin = function() {
+      tutupModalRegister();
+      bukaModalLogin();
+    };
+
+    // Fungsi Pendaftaran Akun Baru
+    window.prosesRegister = function(e) {
+      e.preventDefault();
+      var user = document.getElementById('register-username').value.trim();
+      var pass = document.getElementById('register-password').value;
+      var err = document.getElementById('register-error');
+
+      var registeredUsers = window.getRegisteredUsers();
+
+      if (user.toLowerCase() === 'admin' || registeredUsers[user]) {
+        if (err) {
+          err.innerText = 'Username sudah terdaftar! Gunakan username lain.';
+          err.classList.remove('hidden');
+        }
+        return;
+      }
+
+      // Simpan username & password baru
+      registeredUsers[user] = pass;
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+      document.getElementById('register-username').value = '';
+      document.getElementById('register-password').value = '';
+
+      tutupModalRegister();
+
+      // Buka modal notifikasi lalu arahkan otomatis ke Modal Login
+      window.bukaModalNotifikasi(
+        'Pendaftaran Berhasil!',
+        'Akun Anda telah dibuat. Silakan login menggunakan username dan password baru Anda.',
+        'success',
+        function() {
+          bukaModalLogin(null, user);
+        }
+      );
+    };
+
+    // Fungsi Login Akun
+    window.prosesLogin = function(e) {
+      e.preventDefault();
+      var user = document.getElementById('login-username').value.trim();
+      var pass = document.getElementById('login-password').value;
+      var err = document.getElementById('login-error');
+
+      var registeredUsers = window.getRegisteredUsers();
+
+      if ((user === 'Admin' && pass === '123') || (registeredUsers[user] && registeredUsers[user] === pass)) {
+        localStorage.setItem('isLoggedIn', 'true');
+        window.updateUIByLoginStatus();
+        tutupModalLogin();
+        
+        window.bukaModalNotifikasi('Login Berhasil!', 'Selamat datang kembali, ' + user + '! Sekarang Anda memiliki akses penuh.', 'success', function() {
+          if (window.targetTabSetiapLogin) {
+            window.bukaTab(window.targetTabSetiapLogin);
+          }
+        });
+      } else {
+        if (err) {
+          err.innerText = 'Username atau Password salah!';
+          err.classList.remove('hidden');
+        }
+      }
+    };
+
+    window.logout = function() {
+      localStorage.removeItem('isLoggedIn');
+      window.updateUIByLoginStatus();
+
+      window.bukaModalNotifikasi('Logout Berhasil', 'Anda telah keluar dari akun.', 'info', function() {
+        window.bukaTab('tab-home');
+      });
+    };
+
+    window.toggleMenu = function() {
+      var menu = document.getElementById('mobile-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    };
+
+    window.bukaTab = function(tabId) {
+      if ((tabId === 'tab-fundamental' || tabId === 'tab-subtes') && !window.isLoggedIn()) {
+        window.bukaModalNotifikasi(
+          'Akses Terbatas',
+          'Silakan login terlebih dahulu untuk mengakses menu ini.',
+          'warning',
+          function() {
+            window.bukaModalLogin(tabId);
+          }
+        );
+        return;
+      }
+
+      var tabs = document.querySelectorAll('.tab-utama');
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.add('hidden');
+      }
+      var targetTab = document.getElementById(tabId);
+      if (targetTab) {
+        targetTab.classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.bukaSubTab = function(subTabId) {
+      var subTabs = document.querySelectorAll('.sub-tab');
+      for (var i = 0; i < subTabs.length; i++) {
+        subTabs[i].classList.add('hidden');
+      }
+      var target = document.getElementById(subTabId);
+      if (target) {
+        target.classList.remove('hidden');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    window.bukaSubtesContent = function(subtesId) {
+      var items = document.querySelectorAll('.subtes-detail');
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.add('hidden');
+      }
+      var target = document.getElementById(subtesId);
+      if (target) {
+        target.classList.remove('hidden');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    window.cekJawaban = function(btn, isCorrect, message) {
+      var parent = btn.closest('div.p-3') || btn.closest('div.p-4');
+      if (!parent) return;
+      var feedback = parent.querySelector('.feedback-text');
+      var buttons = parent.querySelectorAll('button');
+      
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('bg-green-600', 'bg-red-600', 'text-white');
+        buttons[i].classList.add('bg-slate-800');
+      }
+
+      if (feedback) {
+        feedback.classList.remove('hidden', 'text-green-400', 'text-red-400');
+        if (isCorrect) {
+          btn.classList.remove('bg-slate-800');
+          btn.classList.add('bg-green-600', 'text-white');
+          feedback.classList.add('text-green-400');
+          feedback.innerText = "✅ " + message;
+        } else {
+          btn.classList.remove('bg-slate-800');
+          btn.classList.add('bg-red-600', 'text-white');
+          feedback.classList.add('text-red-400');
+          feedback.innerText = "❌ " + message;
+        }
+      }
+    };
+
+    window.updateCountdown = function() {
+      var targetUTBK = new Date('2027-04-26T07:00:00').getTime();
+      var sekarang = new Date().getTime();
+      var selisih = targetUTBK - sekarang;
+
+      var elDays = document.getElementById('cd-days');
+      var elHours = document.getElementById('cd-hours');
+      var elMinutes = document.getElementById('cd-minutes');
+      var elSeconds = document.getElementById('cd-seconds');
+
+      if (!elDays || !elHours || !elMinutes || !elSeconds) return;
+
+      if (selisih > 0) {
+        var hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+        var jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+        var detik = Math.floor((selisih % (1000 * 60)) / 1000);
+
+        elDays.textContent = hari;
+        elHours.textContent = jam < 10 ? '0' + jam : jam;
+        elMinutes.textContent = menit < 10 ? '0' + menit : menit;
+        elSeconds.textContent = detik < 10 ? '0' + detik : detik;
+      } else {
+        elDays.textContent = '00';
+        elHours.textContent = '00';
+        elMinutes.textContent = '00';
+        elSeconds.textContent = '00';
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        window.updateUIByLoginStatus();
+        window.updateCountdown();
+        setInterval(window.updateCountdown, 1000);
+      });
+    } else {
+      window.updateUIByLoginStatus();
+      window.updateCountdown();
+      setInterval(window.updateCountdown, 1000);
+    }
+  
+
+    // Lapisan navigasi multi-halaman; logika asli di atas tetap dipertahankan.
+    (function(){
+      var routes = {"tab-home": "index.html", "tab-fundamental": "fundamental.html", "tab-subtes": "subtes-utbk.html", "tab-tryout": "tryout.html", "sub-bahasa": "fundamental-bahasa.html", "sub-logika": "logika.html", "sub-matematika": "matematika.html", "subtes-pu": "pu.html", "subtes-ppu": "ppu.html", "subtes-pbm": "pbm.html", "subtes-pk": "pk.html", "subtes-pm": "pm.html", "subtes-lbi": "lbi.html", "subtes-lbe": "lbe.html"};
+      var subRoutes = {
+        'sub-bahasa':'fundamental-bahasa.html','sub-logika':'logika.html','sub-matematika':'matematika.html'
+      };
+      window.tutupModalLogin = function() { var modal = document.getElementById('modal-login'); if (modal) modal.classList.add('hidden'); };
+      window.bukaTab = function(tabId) {
+        if ((tabId === 'tab-fundamental' || tabId === 'tab-subtes') && !window.isLoggedIn()) {
+          window.bukaModalNotifikasi('Akses Terbatas','Silakan login terlebih dahulu untuk mengakses menu ini.','warning',function(){ window.bukaModalLogin(tabId); });
+          return;
+        }
+        window.location.href = routes[tabId] || 'index.html';
+      };
+      window.bukaSubTab = function(id) { window.location.href = subRoutes[id] || routes[id] || 'fundamental.html'; };
+      window.bukaSubtesContent = function(id) { window.location.href = routes[id] || 'subtes-utbk.html'; };
+      window.addEventListener('DOMContentLoaded', function(){
+        var page = location.pathname.split('/').pop() || 'index.html';
+        var protectedPages = ["fundamental.html", "fundamental-bahasa.html", "logika.html", "matematika.html", "subtes-utbk.html", "pu.html", "ppu.html", "pbm.html", "pk.html", "pm.html", "lbi.html", "lbe.html"];
+        if (protectedPages.indexOf(page) !== -1 && !window.isLoggedIn()) {
+          window.bukaModalNotifikasi('Akses Terbatas','Silakan login terlebih dahulu untuk mengakses menu ini.','warning',function(){ window.bukaModalLogin(page.indexOf('fundamental')===0 || page==='logika.html' || page==='matematika.html' ? 'tab-fundamental' : 'tab-subtes'); });
+        }
+        if (page === 'login.html') window.bukaModalLogin();
+        if (page === 'daftar.html') window.bukaModalRegister();
+      });
+    })();
+</script></body></html>
