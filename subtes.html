@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>BimbelKu - Subtes UTBK</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      alert('Silakan login terlebih dahulu untuk mengakses Subtes UTBK.');
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+  <header class="sticky top-0 z-50 w-full backdrop-blur border-b border-slate-800 bg-slate-900/90">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-bold text-xl text-sky-500">Bimbel<span class="text-white">Ku</span></a>
+      <a href="index.html" class="text-sm text-sky-400 hover:underline">&larr; Kembali ke Beranda</a>
+    </div>
+  </header>
+  <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full space-y-10">
+    <h2 class="text-3xl font-bold text-white">Subtes UTBK SNBT</h2>
+    
+    <!-- TPS -->
+    <div>
+      <h3 class="text-xl font-bold text-sky-400 mb-4">🎯 Tes Potensi Skolastik (TPS)</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="subtes-pu.html" class="bg-slate-800 p-5 rounded-2xl border border-slate-700 hover:border-sky-500 block"><span class="text-2xl block mb-2">🧠</span><h4 class="font-bold text-white">Penalaran Umum (PU)</h4></a>
+        <a href="subtes-ppu.html" class="bg-slate-800 p-5 rounded-2xl border border-slate-700 hover:border-sky-500 block"><span class="text-2xl block mb-2">📖</span><h4 class="font-bold text-white">PPU</h4></a>
+        <a href="subtes-pbm.html" class="bg-slate-800 p-5 rounded-2xl border border-slate-700 hover:border-sky-500 block"><span class="text-2xl block mb-2">✍️</span><h4 class="font-bold text-white">PBM</h4></a>
+        <a href="subtes-pk.html" class="bg-slate-800 p-5 rounded-2xl border border-slate-700 hover:border-sky-500 block"><span class="text-2xl block mb-2">🔢</span><h4 class="font-bold text-white">PK</h4></a>
+      </div>
+    </div>
+
+    <!-- LITERASI -->
+    <div>
+      <h3 class="text-xl font-bold text-sky-400 mb-4">📚 Tes Literasi</h3>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a href="subtes-lbi.html" class="bg-slate-800 p-5 rounded-2xl border border-slate-700 hover:border-sky-500 block"><span class="text-2xl block mb-2">🇮🇩</span><h4 class="font-bold text-white">Literasi Bahasa Indonesia (LBI)</h4></a>
+        <a href="subtes-lbe.html" class="bg-slate-800 p-5 rounded-2xl border border-slate-700 hover:border-sky-500 block"><span class="text-2xl block mb-2">🇬🇧</span><h4 class="font-bold text-white">Literasi Bahasa Inggris (LBE)</h4></a>
+        <a href="subtes-pm.html" class="bg-slate-800 p-5 rounded-2xl border border-slate-700 hover:border-sky-500 block"><span class="text-2xl block mb-2">📊</span><h4 class="font-bold text-white">Penalaran Matematika (PM)</h4></a>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

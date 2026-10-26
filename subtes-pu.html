@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>BimbelKu - Subtes PU</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+  <header class="sticky top-0 z-50 w-full backdrop-blur border-b border-slate-800 bg-slate-900/90">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-bold text-xl text-sky-500">Bimbel<span class="text-white">Ku</span></a>
+      <a href="subtes.html" class="text-sm text-sky-400 hover:underline">&larr; Kembali ke Subtes</a>
+    </div>
+  </header>
+  <main class="flex-grow max-w-4xl mx-auto px-4 py-10 w-full space-y-6">
+    <h3 class="font-bold text-2xl text-white">Penalaran Umum (PU)</h3>
+    <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700">
+      <p class="font-semibold text-white mb-3">1. Premis 1: Semua siswa yang rajin belajar akan lulus UTBK.<br>Premis 2: Andi tidak lulus UTBK.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button onclick="cekJawaban(this, false, 'Salah!')" class="py-2.5 px-4 bg-slate-800 text-left rounded-lg text-sm">A. Andi rajin belajar</button>
+        <button onclick="cekJawaban(this, true, 'Benar! Modus Tollens.')" class="py-2.5 px-4 bg-slate-800 text-left rounded-lg text-sm">B. Andi tidak rajin belajar</button>
+      </div>
+      <p class="feedback-text text-xs mt-3 hidden font-medium"></p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
