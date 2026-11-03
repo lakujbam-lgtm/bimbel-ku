@@ -274,20 +274,20 @@
         // Tunggu sebentar agar render DOM selesai
         setTimeout(() => {
             const offsetTop = nodeElement.offsetTop;
-            const offsetLeft = nodeElement.offsetLeft;
-            const offsetWidth = nodeElement.offsetWidth;
             
             // Posisikan karakter tepat di atas/samping node
             avatar.style.top = `${offsetTop - 45}px`;
+            
             // Kalkulasi agar karakter mengikuti pergeseran (translateX) node
             const transformX = parseInt(nodeElement.style.transform.match(/-?\d+/)[0]);
             avatar.style.left = `calc(50% + ${transformX}px + 20px)`; 
 
-            // Gulir layar secara smooth agar level aktif ada di tengah layar
-            pathArea.scrollTo({
-                top: nodeElement.offsetTop - 200,
-                behavior: 'smooth'
+            // Gulir layar secara otomatis dan smooth agar level aktif selalu di tengah
+            nodeElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
             });
+            
         }, 100);
     }
 
