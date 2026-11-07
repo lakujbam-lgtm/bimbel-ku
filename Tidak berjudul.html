@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BimbelKu - Platform Belajar Interaktif</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Custom Scrollbar for Modal */
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #64748b; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky top-0 z-50 w-full backdrop-blur border-b border-slate-800 bg-slate-900/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative">
+      
+      <!-- Logo BimbelKu -->
+      <button onclick="bukaTab('tab-home')" class="flex items-center gap-2 font-bold text-xl text-sky-500 focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+        <span>Bimbel<span class="text-white">Ku</span></span>
+      </button>
+
+      <!-- Tombol Garis Tiga / Hamburger Menu -->
+      <button id="btn-hamburger" onclick="toggleMenu()" class="p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg focus:outline-none transition">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Dropdown Menu -->
+      <div id="mobile-menu" class="hidden absolute top-16 right-4 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl p-2 flex flex-col gap-1 z-50">
+        <button onclick="bukaTab('tab-home'); toggleMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2">🏠 Beranda</button>
+        <button onclick="bukaTab('tab-fundamental'); toggleMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2">📚 Fundamental <span class="icon-kunci">🔒</span></button>
+        <button onclick="bukaTab('tab-subtes'); toggleMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2">🎯 Subtes UTBK <span class="icon-kunci">🔒</span></button>
+        <button onclick="bukaTab('tab-tryout'); toggleMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-sky-600 hover:text-white transition flex items-center gap-2">📝 Tryout</button>
+        <div class="border-t border-slate-700 my-1"></div>
+        <button id="btn-login-menu" onclick="bukaModalLogin(); toggleMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-sky-400 font-semibold hover:bg-sky-600 hover:text-white transition flex items-center gap-2">🔑 Login</button>
+        <button id="btn-register-menu" onclick="bukaModalRegister(); toggleMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm text-emerald-400 font-semibold hover:bg-emerald-600 hover:text-white transition flex items-center gap-2">📝 Daftar</button>
+        <button id="btn-logout-menu" onclick="logout(); toggleMenu();" class="hidden w-full text-left px-4 py-2.5 rounded-lg text-sm text-rose-400 font-semibold hover:bg-rose-600 hover:text-white transition flex items-center gap-2">🚪 Logout</button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <section id="tab-home" class="tab-utama">
+      <div class="relative overflow-hidden bg-gradient-to-b from-sky-950/40 to-transparent py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-sky-950 text-sky-300 border border-sky-800 mb-6">
+            ✨ 100% Gratis Tanpa Biaya Tersembunyi
+          </span>
+
+          <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+            Pendidikan Berkualitas untuk <br class="hidden sm:inline"/>
+            <span class="text-sky-400">Semua Anak Bangsa</span>
+          </h1>
+
+          <div class="flex flex-wrap justify-center gap-4">
+            <button onclick="bukaTab('tab-fundamental')" class="px-7 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-600/30 transition duration-200 flex items-center gap-2">
+              Mulai Belajar
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-fundamental" class="tab-utama hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-white mb-2">Materi Fundamental</h2>
+        <p class="text-slate-400">Pilih kategori materi dasar yang ingin kamu pelajari:</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6 mb-10">
+        <button onclick="bukaSubTab('sub-bahasa')" class="text-left bg-slate-800/80 hover:bg-slate-800 hover:border-sky-500 rounded-2xl border border-slate-700 p-6 transition flex flex-col justify-between group focus:outline-none">
+          <div>
+            <div class="w-10 h-10 bg-sky-950 text-sky-400 rounded-lg flex items-center justify-center mb-4 border border-sky-800">🗣️</div>
+            <h3 class="font-bold text-lg text-white mb-2 group-hover:text-sky-400 transition">Fundamental Bahasa</h3>
+          </div>
+        </button>
+        <button onclick="bukaSubTab('sub-logika')" class="text-left bg-slate-800/80 hover:bg-slate-800 hover:border-sky-500 rounded-2xl border border-slate-700 p-6 transition flex flex-col justify-between group focus:outline-none">
+          <div>
+            <div class="w-10 h-10 bg-sky-950 text-sky-400 rounded-lg flex items-center justify-center mb-4 border border-sky-800">🧠</div>
+            <h3 class="font-bold text-lg text-white mb-2 group-hover:text-sky-400 transition">Fundamental Logika</h3>
+          </div>
+        </button>
+        <button onclick="bukaSubTab('sub-matematika')" class="text-left bg-slate-800/80 hover:bg-slate-800 hover:border-sky-500 rounded-2xl border border-slate-700 p-6 transition flex flex-col justify-between group focus:outline-none">
+          <div>
+            <div class="w-10 h-10 bg-sky-950 text-sky-400 rounded-lg flex items-center justify-center mb-4 border border-sky-800">📐</div>
+            <h3 class="font-bold text-lg text-white mb-2 group-hover:text-sky-400 transition">Fundamental Matematika</h3>
+          </div>
+        </button>
+      </div>
+
+      <!-- TEMPAT MAP GAMIFIKASI -->
+      
+<div id="sub-bahasa" class="sub-tab hidden p-8 bg-slate-800/80 rounded-3xl border border-slate-700 relative overflow-hidden">
+    <div class="text-center mb-10">
+        <h3 class="font-extrabold text-3xl text-white mb-3">Peta Perjalanan Belajar</h3>
+        <p class="text-slate-400 text-sm max-w-lg mx-auto">Selesaikan video materi (▶️) untuk membuka latihan soal (📝). Kumpulkan EXP dan capai level tertinggi! Karaktermu akan melangkah maju di setiap kemenangan.</p>
+    </div>
+
+    <!-- Gamification Map Container -->
+    <div id="gamification-map" class="relative w-full max-w-md mx-auto py-12 flex flex-col items-center">
+        <!-- Connecting Line -->
+        <div class="absolute w-3 h-[90%] bg-slate-700 left-1/2 transform -translate-x-1/2 z-0 rounded-full top-8 shadow-inner shadow-black/50"></div>
+        
+        <!-- Character Avatar -->
+        <div id="character" class="absolute w-14 h-14 bg-sky-900 rounded-full flex items-center justify-center text-3xl z-30 transition-all duration-1000 ease-in-out shadow-[0_0_20px_rgba(56,189,248,0.5)] border-4 border-sky-400" style="top: 0; left: 0;">🧑‍🎓</div>
+        
+        <!-- Nodes -->
+        <div id="map-nodes" class="w-full flex flex-col items-center gap-16 z-10 relative">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+</div>
+
+      
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-900 border-t border-slate-800 py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-500">
+      <p>© 2026 BimbelKu Interaktif. Dibuat untuk pendidikan Indonesia yang inklusif.</p>
+    </div>
+  </footer>
+  
+  
+<!-- LEVEL MODAL -->
+<div id="level-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-md hidden p-4 transition-opacity">
+    <div class="bg-slate-800 border border-slate-700 rounded-3xl w-full max-w-3xl shadow-2xl relative flex flex-col max-h-[90vh] overflow-hidden">
+        
+        <div class="px-6 py-5 border-b border-slate-700 flex justify-between items-center bg-slate-800/50">
+            <h3 id="modal-title" class="text-xl font-bold text-white flex items-center gap-2"></h3>
+            <button onclick="closeLevelModal()" class="text-slate-400 hover:text-white text-3xl font-bold transition transform hover:scale-110">&times;</button>
+        </div>
+
+        <div id="modal-content" class="overflow-y-auto p-6 custom-scrollbar flex-grow space-y-6"></div>
+        
+        <div class="p-6 border-t border-slate-700 bg-slate-800/80 flex justify-between items-center">
+            <div id="modal-feedback" class="text-sm font-semibold"></div>
+            <button id="btn-selesai-level" onclick="selesaikanLevel()" class="px-8 py-3.5 bg-slate-700 text-slate-400 font-bold rounded-xl cursor-not-allowed transition-all duration-300" disabled>Selesaikan & Lanjut 🚀</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const levelData = [{"id": 1, "type": "video", "url": "https://www.youtube.com/embed/4tg01rmxxlI"}, {"id": 2, "type": "quiz", "questions": [{"question": "Soal 1: Huruf apakah yang termasuk dalam kelompok vokal dalam abjad Bahasa Indonesia?", "options": [{"text": "A. a, e, i, o, u", "is_correct": true, "msg": "Benar! Huruf vokal terdiri dari a, e, i, o, u."}, {"text": "B. b, c, d, f, g", "is_correct": false, "msg": "Salah! b, c, d, f adalah huruf konsonan."}, {"text": "C. k, l, m, n, p", "is_correct": false, "msg": "Salah! Huruf konsonan bukan huruf vokal."}, {"text": "D. x, y, z", "is_correct": false, "msg": "Salah! Huruf vokal bukan x, y, z."}]}, {"question": "Soal 2: Berapakah jumlah huruf abjad dalam bahasa Indonesia baku?", "options": [{"text": "A. 24", "is_correct": false, "msg": "Salah! Jumlah abjad bahasa Indonesia adalah 26."}, {"text": "B. 26", "is_correct": true, "msg": "Benar! Abjad bahasa Indonesia terdiri dari 26 huruf (A sampai Z)."}, {"text": "C. 28", "is_correct": false, "msg": "Salah! Bukan 28."}, {"text": "D. 30", "is_correct": false, "msg": "Salah! Bukan 30."}]}]}, {"id": 3, "type": "video", "url": "https://www.youtube.com/embed/nqfO_C5Y57M"}, {"id": 4, "type": "quiz", "questions": [{"question": "Soal 1: Manakah penggunaan huruf kapital yang benar pada nama geografis?", "options": [{"text": "A. Sungai Citarum", "is_correct": true, "msg": "Benar! Huruf kapital digunakan untuk unsur nama geografis yang diikuti nama diri."}, {"text": "B. sungai citarum", "is_correct": false, "msg": "Salah! Nama sungai harus diawali kapital."}, {"text": "C. sungai Citarum", "is_correct": false, "msg": "Salah! Kata Sungai juga harus kapital."}, {"text": "D. Sungai citarum", "is_correct": false, "msg": "Salah! Kata Citarum harus ditulis kapital."}]}, {"question": "Soal 2: Penulisan huruf kapital pada awal kalimat yang tepat terdapat pada...", "options": [{"text": "A. Mereka belajar bersama.", "is_correct": true, "msg": "Benar! Awal kalimat harus selalu menggunakan huruf kapital."}, {"text": "B. mereka belajar bersama.", "is_correct": false, "msg": "Salah! Awal kalimat harus kapital."}, {"text": "C. Mereka Belajar bersama.", "is_correct": false, "msg": "Salah! Kata belajar tidak perlu kapital."}, {"text": "D. MEREKA BELAJAR BERSAMA.", "is_correct": false, "msg": "Salah! Hanya awal kalimat yang menggunakan kapital."}]}]}, {"id": 5, "type": "video", "url": "https://www.youtube.com/embed/VSSheVP5pLA"}, {"id": 6, "type": "quiz", "questions": [{"question": "Soal 1: Penggunaan miring (kursif) digunakan untuk menuliskan...", "options": [{"text": "A. Judul buku atau kata asing", "is_correct": true, "msg": "Benar! Huruf miring digunakan untuk menegaskan atau mengkhususkan huruf."}, {"text": "B. Nama orang", "is_correct": false, "msg": "Salah! Nama orang tidak miring."}, {"text": "C. Nama kota", "is_correct": false, "msg": "Salah! Nama kota ditulis tegak."}, {"text": "D. Singkatan lembaga", "is_correct": false, "msg": "Salah! Singkatan ditulis tegak."}]}, {"question": "Soal 2: Kata istilah asing yang belum diserap sepenuhnya ditulis dengan...", "options": [{"text": "A. Huruf miring", "is_correct": true, "msg": "Benar! Istilah asing ditulis miring."}, {"text": "B. Huruf tebal", "is_correct": false, "msg": "Salah! Huruf tebal untuk penegasan bab/subbab."}, {"text": "C. Huruf kapital", "is_correct": false, "msg": "Salah! Huruf kapital hanya awal kata tertentu."}, {"text": "D. Garis bawah", "is_correct": false, "msg": "Salah! Bukan garis bawah."}]}]}, {"id": 7, "type": "video", "url": "https://www.youtube.com/embed/fXtJTko68lU"}, {"id": 8, "type": "quiz", "questions": [{"question": "Soal 1: Penulisan kata berimbuhan yang benar di bawah ini adalah...", "options": [{"text": "A. Mempertanggungjawabkan", "is_correct": true, "msg": "Benar! Imbuhan me- + pertanggungjawabkan ditulis serangkai."}, {"text": "B. Mempertanggung jawabkan", "is_correct": false, "msg": "Salah! Harus digabung karena mendapat awalan dan akhiran sekaligus."}, {"text": "C. Memper tanggung jawabkan", "is_correct": false, "msg": "Salah! Penulisan ini tidak baku."}, {"text": "D. Memper-tanggunjawabkan", "is_correct": false, "msg": "Salah! Tidak dipisah dengan tanda hubung."}]}, {"question": "Soal 2: Kata turunan yang mendapat awalan dan akhiran sekaligus ditulis secara...", "options": [{"text": "A. Serangkai (digabung)", "is_correct": true, "msg": "Benar! Awalan dan akhiran gabungan ditulis serangkai."}, {"text": "B. Terpisah", "is_correct": false, "msg": "Salah! Tidak terpisah."}, {"text": "C. Menggunakan spasi", "is_correct": false, "msg": "Salah! Tidak menggunakan spasi."}, {"text": "D. Menggunakan tanda petik", "is_correct": false, "msg": "Salah! Tidak menggunakan tanda petik."}]}]}, {"id": 9, "type": "video", "url": "https://www.youtube.com/embed/72-ssR1s-sY"}, {"id": 10, "type": "quiz", "questions": [{"question": "Soal 1: Manakah bentuk gabungan kata yang ditulis terpisah karena tidak mendapat imbuhan gabungan?", "options": [{"text": "A. Tanggung jawab", "is_correct": true, "msg": "Benar! Tanggung jawab ditulis terpisah jika tidak mendapat imbuhan gabungan."}, {"text": "B. Tanggungjawab", "is_correct": false, "msg": "Salah! Tanpa imbuhan gabungan harus dipisah."}, {"text": "C. Tanggung-jawab", "is_correct": false, "msg": "Salah! Tidak baku."}, {"text": "D. Tanggung_jawab", "is_correct": false, "msg": "Salah! Tidak terpisah dengan strip."}]}, {"question": "Soal 2: Kata maha yang diikuti kata dasar yang mengacu pada sifat Tuhan ditulis...", "options": [{"text": "A. Serangkai (Contoh: Mahakuasa)", "is_correct": true, "msg": "Benar! Mahakuasa ditulis serangkai karena diikuti kata dasar."}, {"text": "B. Terpisah", "is_correct": false, "msg": "Salah! Bukan dipisah untuk kata dasar."}, {"text": "C. Dengan tanda hubung", "is_correct": false, "msg": "Salah! Tidak pakai tanda hubung."}, {"text": "D. Diberi huruf miring", "is_correct": false, "msg": "Salah! Bukan miring."}]}]}, {"id": 11, "type": "video", "url": "https://www.youtube.com/embed/U3GqQPXEBD4"}, {"id": 12, "type": "quiz", "questions": [{"question": "Soal 1: Manakah penulisan kata depan 'di' yang tepat untuk menunjukkan tempat?", "options": [{"text": "A. di sekolah", "is_correct": true, "msg": "Benar! Kata depan di untuk keterangan tempat ditulis terpisah."}, {"text": "B. disekolah", "is_correct": false, "msg": "Salah! Sebagai kata depan harus dipisah."}, {"text": "C. di-sekolah", "is_correct": false, "msg": "Salah! Tidak pakai tanda hubung."}, {"text": "D. DiSekolah", "is_correct": false, "msg": "Salah! Tidak pakai kapital kecuali awal kalimat."}]}, {"question": "Soal 2: Penulisan 'di-' sebagai awalan kata kerja pasif harus...", "options": [{"text": "A. Digabung (Contoh: dimakan)", "is_correct": true, "msg": "Benar! Awalan di- sebagai pembentuk kata pasif ditulis digabung (serangkai)."}, {"text": "B. Dipisah", "is_correct": false, "msg": "Salah! Untuk kata kerja pasif tidak dipisah."}, {"text": "C. Diberi tanda hubung", "is_correct": false, "msg": "Salah! Tidak pakai tanda hubung."}, {"text": "D. Diberi huruf kapital", "is_correct": false, "msg": "Salah! Tidak kapital."}]}]}, {"id": 13, "type": "video", "url": "https://www.youtube.com/embed/MX9sFv3klug"}, {"id": 14, "type": "quiz", "questions": [{"question": "Soal 1: Partikel 'pun' yang ditulis terpisah dari kata yang mendahuluinya adalah...", "options": [{"text": "A. Apa pun yang terjadi, kita harus kuat.", "is_correct": true, "msg": "Benar! Partikel pun yang bermakna juga/jua ditulis terpisah."}, {"text": "B. Adapun masalah tersebut sudah selesai.", "is_correct": false, "msg": "Salah! Adapun adalah konjungsi yang ditulis serangkai."}, {"text": "C. Walaupun hujan, ia tetap berangkat.", "is_correct": false, "msg": "Salah! Walaupun ditulis serangkai."}, {"text": "D. Meskipun lelah, ia tersenyum.", "is_correct": false, "msg": "Salah! Meskipun ditulis serangkai."}]}, {"question": "Soal 2: Partikel 'per' yang bermakna 'demi', 'tiap', atau 'mulai' ditulis...", "options": [{"text": "A. Terpisah dari kata yang mengikutinya", "is_correct": true, "msg": "Benar! Partikel per yang berarti tiap/demi/mulai ditulis terpisah."}, {"text": "B. Digabung secara langsung", "is_correct": false, "msg": "Salah! Tidak digabung."}, {"text": "C. Diberi tanda hubung", "is_correct": false, "msg": "Salah! Tidak pakai tanda hubung."}, {"text": "D. Ditulis dengan huruf miring", "is_correct": false, "msg": "Salah! Tidak ditulis miring."}]}]}];
+    let unlockedLevel = parseInt(localStorage.getItem('unlockedLevelBahasa')) || 1;
+    let activeLevelIndex = -1;
+
+    function bukaSubTab(tabId) {
+        document.querySelectorAll('.sub-tab').forEach(el => el.classList.add('hidden'));
+        const target = document.getElementById(tabId);
+        if (target) {
+            target.classList.remove('hidden');
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (tabId === 'sub-bahasa') {
+                renderMap();
+            }
+        }
+    }
+
+    function renderMap() {
+        const container = document.getElementById('map-nodes');
+        if(!container) return;
+        container.innerHTML = '';
+        
+        levelData.forEach((lvl, index) => {
+            const levelNum = index + 1;
+            const isUnlocked = levelNum <= unlockedLevel;
+            const isCompleted = levelNum < unlockedLevel;
+            const isVideo = lvl.type === 'video';
+
+            // Duolingo style zigzag: Center, Right, Center, Left
+            let offsetClass = 'translate-x-0';
+            if (index % 4 === 1) offsetClass = 'translate-x-20';
+            if (index % 4 === 3) offsetClass = '-translate-x-20';
+
+            let bgColor = isUnlocked ? (isVideo ? 'bg-sky-500' : 'bg-emerald-500') : 'bg-slate-700';
+            let borderColor = isUnlocked ? (isVideo ? 'border-sky-600' : 'border-emerald-600') : 'border-slate-800';
+            let shadow = isUnlocked ? (isVideo ? 'shadow-sky-500/50' : 'shadow-emerald-500/50') : 'shadow-none';
+            let icon = isVideo ? '▶️' : '📝';
+            
+            if (isCompleted) icon = '⭐';
+            if (!isUnlocked) icon = '🔒';
+
+            container.innerHTML += `
+                <div class="relative w-full flex justify-center ${offsetClass}">
+                    <button id="node-btn-${levelNum}" onclick="bukaLevel(${levelNum})" class="relative w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center text-3xl shadow-xl border-b-8 ${borderColor} ${bgColor} ${shadow} transform transition-all duration-200 hover:-translate-y-2 hover:scale-105 active:scale-95 active:translate-y-2 active:border-b-0 ${!isUnlocked ? 'opacity-60 cursor-not-allowed grayscale' : ''}">
+                        ${icon}
+                    </button>
+                    <div class="absolute -bottom-4 right-1/2 translate-x-1/2 text-xs font-black text-slate-200 bg-slate-900/90 px-3 py-1 rounded-full border-2 border-slate-700 shadow-md">LVL ${levelNum}</div>
+                </div>
+            `;
+        });
+        
+        setTimeout(updateCharacterPos, 300);
+    }
+
+    function updateCharacterPos() {
+        const char = document.getElementById('character');
+        const map = document.getElementById('gamification-map');
+        const targetNode = document.getElementById('node-btn-' + unlockedLevel);
+
+        if (targetNode && char && map) {
+            const targetRect = targetNode.getBoundingClientRect();
+            const mapRect = map.getBoundingClientRect();
+            
+            const top = targetRect.top - mapRect.top;
+            const left = targetRect.left - mapRect.left;
+            
+            const charOffsetX = left + (targetRect.width / 2) - (char.offsetWidth / 2);
+            const charOffsetY = top + (targetRect.height / 2) - (char.offsetHeight / 2) - 15;
+
+            char.style.transform = `translate(${charOffsetX}px, ${charOffsetY}px)`;
+        }
+    }
+
+    window.addEventListener('resize', updateCharacterPos);
+
+    function bukaLevel(levelNum) {
+        if (levelNum > unlockedLevel) return;
+        activeLevelIndex = levelNum - 1;
+        const data = levelData[activeLevelIndex];
+        
+        const modal = document.getElementById('level-modal');
+        const title = document.getElementById('modal-title');
+        const content = document.getElementById('modal-content');
+        const btnSelesai = document.getElementById('btn-selesai-level');
+        const feedback = document.getElementById('modal-feedback');
+
+        btnSelesai.disabled = true;
+        btnSelesai.className = 'px-8 py-3.5 bg-slate-700 text-slate-400 font-bold rounded-xl cursor-not-allowed transition-all duration-300 border-b-4 border-slate-800';
+        feedback.innerHTML = '';
+
+        if (data.type === 'video') {
+            title.innerHTML = `📺 Level ${levelNum}: Materi Video`;
+            content.innerHTML = `
+                <div class="aspect-video w-full rounded-2xl overflow-hidden border-4 border-slate-700 shadow-2xl">
+                    <iframe class="w-full h-full" src="${data.url}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="bg-sky-900/30 p-4 rounded-xl border border-sky-800/50 flex items-start gap-3 mt-4">
+                    <span class="text-2xl">💡</span>
+                    <p class="text-sky-200 text-sm leading-relaxed">Tonton video penjelasan materi hingga selesai. Pahami baik-baik konsepnya karena level selanjutnya adalah ujian dari video ini!</p>
+                </div>
+            `;
+            
+            feedback.innerHTML = '<span class="text-sky-400 animate-pulse">Menonton video... (Tombol akan aktif 5 detik lagi)</span>';
+            setTimeout(() => {
+                enableSelesaiBtn();
+                feedback.innerHTML = '<span class="text-emerald-400 font-bold">✨ Video selesai! Silakan lanjut.</span>';
+            }, 5000); 
+            
+        } else {
+            title.innerHTML = `🎯 Level ${levelNum}: Tantangan Latihan Soal`;
+            let html = `<div class="space-y-6" id="quiz-container">`;
+            
+            data.questions.forEach((q, qIdx) => {
+                html += `
+                <div class="p-6 bg-slate-900 rounded-2xl border-2 border-slate-700 quiz-item shadow-lg relative overflow-hidden" data-answered="false">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-slate-600 status-bar transition-colors"></div>
+                    <p class="font-semibold text-slate-100 mb-5 text-lg pl-4">${q.question}</p>
+                    <div class="grid grid-cols-1 gap-3 pl-4">
+                        ${q.options.map((opt) => `
+                            <button onclick="jawabSoal(this, ${str(opt['is_correct']).lower()}, '${opt['msg'].replace("'", "\\'") }')" class="py-3.5 px-5 bg-slate-800 hover:bg-slate-700 border-2 border-slate-700 hover:border-sky-500 rounded-xl text-left transition-all duration-200 text-slate-300 font-medium transform hover:scale-[1.01] active:scale-95 shadow-md">${opt['text']}</button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback-text text-sm mt-5 hidden font-bold p-4 rounded-xl ml-4"></div>
+                </div>`;
+            });
+            html += `</div>`;
+            content.innerHTML = html;
+            feedback.innerHTML = '<span class="text-slate-400">Selesaikan semua soal dengan benar untuk lanjut.</span>';
+        }
+
+        modal.classList.remove('hidden');
+    }
+
+    function jawabSoal(btn, isCorrect, msg) {
+        const parent = btn.closest('.quiz-item');
+        if (parent.dataset.answered === "true") return; 
+
+        const feedback = parent.querySelector('.feedback-text');
+        const statusBar = parent.querySelector('.status-bar');
+        const buttons = parent.querySelectorAll('button');
+
+        buttons.forEach(b => {
+            b.classList.remove('bg-emerald-600', 'bg-rose-600', 'text-white', 'border-emerald-500', 'border-rose-500', 'hover:border-sky-500');
+            b.classList.add('bg-slate-800', 'text-slate-400', 'opacity-50');
+            b.disabled = true; 
+        });
+
+        feedback.classList.remove('hidden', 'bg-emerald-900/30', 'text-emerald-400', 'bg-rose-900/30', 'text-rose-400');
+        
+        if (isCorrect) {
+            btn.classList.remove('bg-slate-800', 'text-slate-400', 'opacity-50');
+            btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-500', 'opacity-100', 'shadow-[0_0_15px_rgba(16,185,129,0.4)]');
+            feedback.classList.add('bg-emerald-900/30', 'text-emerald-400', 'border', 'border-emerald-800/50');
+            statusBar.classList.replace('bg-slate-600', 'bg-emerald-500');
+            feedback.innerHTML = "🎉 <b>Luar Biasa!</b> " + msg;
+            parent.dataset.answered = "true";
+            checkAllAnswered();
+        } else {
+            btn.classList.remove('bg-slate-800', 'text-slate-400', 'opacity-50');
+            btn.classList.add('bg-rose-600', 'text-white', 'border-rose-500', 'opacity-100', 'shadow-[0_0_15px_rgba(225,29,72,0.4)]');
+            feedback.classList.add('bg-rose-900/30', 'text-rose-400', 'border', 'border-rose-800/50');
+            statusBar.classList.replace('bg-slate-600', 'bg-rose-500');
+            feedback.innerHTML = "💥 <b>Ups, kurang tepat!</b> " + msg + " (Coba lagi)";
+            
+            // Allow retry
+            setTimeout(() => {
+                buttons.forEach(b => {
+                    b.disabled = false;
+                    b.classList.remove('bg-rose-600', 'text-white', 'border-rose-500', 'opacity-100', 'shadow-[0_0_15px_rgba(225,29,72,0.4)]', 'opacity-50');
+                    b.classList.add('bg-slate-800', 'text-slate-300', 'border-slate-700', 'hover:border-sky-500');
+                });
+                feedback.classList.add('hidden');
+                statusBar.classList.replace('bg-rose-500', 'bg-slate-600');
+            }, 2000);
+        }
+    }
+
+    function checkAllAnswered() {
+        const allItems = document.querySelectorAll('.quiz-item');
+        let allCorrect = true;
+        allItems.forEach(item => {
+            if (item.dataset.answered !== "true") allCorrect = false;
+        });
+        if (allCorrect) {
+            enableSelesaiBtn();
+            document.getElementById('modal-feedback').innerHTML = '<span class="text-emerald-400 font-bold">✨ Sempurna! Kamu telah menyelesaikan level ini.</span>';
+        }
+    }
+
+    function enableSelesaiBtn() {
+        const btnSelesai = document.getElementById('btn-selesai-level');
+        btnSelesai.disabled = false;
+        btnSelesai.className = 'px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-black rounded-xl transition-all border-b-4 border-amber-700 hover:border-b-0 hover:translate-y-1 shadow-[0_0_20px_rgba(245,158,11,0.4)]';
+    }
+
+    function closeLevelModal() {
+        document.getElementById('level-modal').classList.add('hidden');
+        document.getElementById('modal-content').innerHTML = ''; 
+    }
+
+    function selesaikanLevel() {
+        if (activeLevelIndex + 1 === unlockedLevel && unlockedLevel < levelData.length) {
+            unlockedLevel++;
+            localStorage.setItem('unlockedLevelBahasa', unlockedLevel);
+            
+            closeLevelModal();
+            renderMap();
+            
+        } else {
+            closeLevelModal();
+        }
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        bukaSubTab('sub-bahasa');
+    });
+</script>
+
+</body>
+</html>
