@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamental Logika - BimbelKu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html { scroll-behavior: smooth; }</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+  
+  <div id="wadah-menu"></div>
+  
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <button onclick="window.location.href='index.html?tab=tab-fundamental'" class="mb-6 px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl text-sm font-semibold flex items-center gap-2 transition text-slate-300 hover:text-white">
+       &larr; Kembali ke Menu Fundamental
+    </button>
+    <!-- SUB-TAB 2: FUNDAMENTAL LOGIKA -->
+      <div id="sub-logika" class="sub-tab  p-6 bg-slate-800/80 rounded-2xl border border-slate-700">
+        <h3 class="font-bold text-2xl text-white mb-3">Fundamental Logika</h3>
+        <p class="text-slate-400 text-sm mb-6">Pelajari materi dasar penalaran dan logika melalui video interaktif serta latihan soal berikut:</p>
+
+        <div class="space-y-8">
+          <!-- Video 1 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">1. Fundamental Logika - Video 1</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/2r4LeDpqonU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 1:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Jika A lebih tinggi dari B, dan B lebih tinggi dari C, maka kesimpulannya adalah...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Sifat transitif: A > B dan B > C maka A > C.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. A lebih tinggi dari C</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! C adalah yang terpendek.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. C lebih tinggi dari A</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! A dan C tidak sama tinggi.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. A dan C sama tinggi</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Kesimpulan dapat ditentukan.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Tidak dapat disimpulkan</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Dalam perbandingan, jika x > y dan y = z, hubungan x dan z adalah...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Karena y = z, maka substitusi menghasilkan x > z.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. x > z</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! x lebih besar dari z.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. x < z</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! x tidak sama dengan z.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. x = z</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Hubungan pasti dapat ditentukan.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. x + z = 0</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">2. Fundamental Logika - Video 2</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/hCaHtVnuAFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 2:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Negasi (ingkaran) dari pernyataan "Semua siswa lulus" adalah...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Negasi dari Kuantor Universal (Semua) adalah Kuantor Eksistensial (Ada/Ada yang tidak).')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Ada siswa yang tidak lulus</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Negasi semua bukan semua tidak.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Semua siswa tidak lulus</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Harus mengandung kata negasi.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Ada siswa yang lulus</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Tidak sesuai aturan negasi kuantor.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Tidak ada siswa yang lulus</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Nilai kebenaran dari implikasi P → Q bernilai SALAH jika dan hanya jika...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Implikasi P → Q hanya bernilai Salah ketika P Benar dan Q Salah.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. P benar dan Q salah</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! P salah dan Q benar bernilai Benar.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. P salah dan Q benar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! P benar dan Q benar bernilai Benar.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. P benar dan Q benar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! P salah dan Q salah bernilai Benar.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. P salah dan Q salah</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">3. Fundamental Logika - Video 3</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/4oJeXNgXS3U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 3:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Premis 1: Jika belajar, maka pintar. Premis 2: Budi belajar. Kesimpulannya...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Aturan Modus Ponens: P → Q, P maka Q.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Budi pintar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Modus ponens menghasilkan Budi pintar.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Budi tidak pintar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Budi dipastikan belajar di premis 2.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Budi belum tentu pintar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Kesimpulan bisa ditarik.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Tidak ada kesimpulan</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Penarikan kesimpulanModus Ponens menggunakan pola...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Modus Ponens: P → Q, P ⊢ Q.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Premis 1: P → Q, Premis 2: P ∴ Q</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Ini adalah Modus Tollens.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Premis 1: P → Q, Premis 2: ~Q ∴ ~P</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Ini adalah Silogisme.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Premis 1: P → Q, Premis 2: Q → R ∴ P → R</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan aturan penarikan kesimpulan valid.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Premis 1: P ∨ Q, Premis 2: P ∴ Q</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 4 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">4. Fundamental Logika - Video 4</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/8Sg2cfjP24I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 4:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Premis 1: Jika hujan, jalan licin. Premis 2: Jalan tidak licin. Kesimpulannya adalah...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Modus Tollens: P → Q, ~Q maka ~P (Tidak hujan).')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Tidak hujan</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Jalan dinyatakan tidak licin.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Hari ini hujan</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Hujan pasti tidak terjadi berdasarkan modus tollens.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Hujan sangat deras</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Kesimpulan sah dapat diambil.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Jalan tergenang air</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Prinsip Modus Tollens berpatokan pada penalaran...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Pengingkaran akibat (~Q) mengakibatkan pengingkaran sebab (~P).')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Mengingkari akibat untuk mengingkari sebab</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Itu modus ponens.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Membenarkan sebab untuk membenarkan akibat</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Mengingkari sebab belum tentu mengingkari akibat.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Mengingkari sebab saja</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan prinsip modus tollens.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Menghubungkan dua implikasi</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 5 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">5. Fundamental Logika - Video 5</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/Gt2Lf2wlNBk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 5:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: P1: Jika rajin belajar, maka lulus UTBK. P2: Jika lulus UTBK, maka bahagia. Kesimpulannya adalah...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Silogisme: P → Q, Q → R ⊢ P → R.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Jika rajin belajar, maka bahagia</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Perhatikan hubungan kausalitas silogisme.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Jika bahagia, maka rajin belajar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Rajin belajar berlanjut ke bahagia.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Jika tidak rajin belajar, maka bahagia</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Kesimpulan silogisme pasti ada.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Tidak ada hubungan</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Hukum silogisme hipotesis menyambungkan dua premis implikasi melalui...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Term menengah (Q) yang sama di akibat premis 1 dan sebab premis 2.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Term tengah yang sama</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan hanya negasi.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Negasi kedua premis</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan konjungsi.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Penggabungan dan</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan pemisahan disjungsi.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Disjungsi eksklusif</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 6 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">6. Fundamental Logika - Video 6</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/hqhIoMf9lX8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 6:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Perhatikan urutan angka berikut: 3, 6, 12, 24, ... Angka selanjutnya adalah...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Pola perkalian 2: 24 × 2 = 48.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. 48</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Pola adalah dikali 2, bukan ditambah 12.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. 36</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Hitung perkalian 2 dari 24.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. 42</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan 50.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. 50</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Pola deret: 5, 10, 15, 20, ... tergolong sebagai deret...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Beda antar suku tetap (+5) merupakan deret aritmatika.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Aritmatika dengan beda +5</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Rasio perkalian tidak tetap.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Geometri dengan rasio 2</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Beda suku adalah +5.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Aritmatika dengan beda +10</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan deret Fibonacci.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Fibonacci</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 7 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">7. Fundamental Logika - Video 7</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/NNeZ68ycpaE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 7:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Jika semua mamalia bernapas dengan paru-paru dan paus adalah mamalia, maka...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Paus termasuk mamalia sehingga bernapas dengan paru-paru.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Paus bernapas dengan paru-paru</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Paus bernapas dengan paru-paru.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Paus bernapas dengan insang</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Paus adalah mamalia.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Paus bukan mamalia</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Kesimpulan pasti dapat ditarik.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Tidak dapat disimpulkan</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Kata "sebagian" atau "beberapa" dalam logika kategoris menunjukkan kuantor...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Sebagian/beberapa menunjukkan kuantor eksistensial (partikular).')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Eksistensial / Partikular</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Universal menggunakan kata semua/setiap.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Universal / Umum</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan konjungsi.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Konjungtif</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan bikondisional.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Bikondisional</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 8 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">8. Fundamental Logika - Video 8</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/mXl_bPtTbvQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 8:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Manakah dari berikut ini yang merupakan contoh Penalaran Induktif?</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Mengamati kasus-kasus khusus lalu menyimpulkan secara umum adalah induktif.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Mengamati beberapa gagak hitam, lalu menyimpulkan semua gagak hitam</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Itu deduktif.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Dari rumus umum menghitung luas lingkaran khusus</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Itu silogisme deduktif.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Menggunakan teori umum untuk kasus individu</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan penarikan kesimpulan induktif.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Menghitung persamaan matematika dasar</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Penalaran Deduktif bergerak dari premis yang bersifat...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Deduktif berawal dari prinsip umum menuju kesimpulan khusus.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Umum ke khusus</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Khusus ke umum adalah induktif.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Khusus ke umum</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan khusus ke khusus.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Khusus ke khusus</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Bukan acak.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Acak tanpa pola</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 9 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">9. Fundamental Logika - Video 9</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/gNkWK-47gUg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 9:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Dalam analisis urutan posisi, jika A duduk di sebelah kiri B, dan B di sebelah kiri C, maka posisi A berada di...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Urutan posisi dari kiri ke kanan: A - B - C.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Paling kiri dari C</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! A berada di paling kiri.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Paling kanan</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! B yang berada di tengah.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Di antara B dan C</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Sebelah kanan C adalah posisi lain.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Sebelah kanan C</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Lima orang antre di kasir. P di depan Q, R di belakang Q, S di depan P. Siapakah yang paling depan?</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Urutan antrean dari depan: S - P - Q - R.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. S</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! P berada di belakang S.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. P</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Q di belakang P.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Q</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! R berada di paling belakang.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. R</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 10 -->
+          <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-700 space-y-4">
+            <h4 class="font-bold text-lg text-sky-400">10. Fundamental Logika - Video 10</h4>
+            <div class="aspect-video w-full rounded-lg overflow-hidden border border-slate-700">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/l_M97mXLZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Latihan Soal -->
+            <div class="space-y-4 pt-2">
+              <h5 class="font-semibold text-white text-sm">Latihan Soal Video 10:</h5>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 1: Pernyataan majemuk yang dihubungkan dengan kata "DAN" disebut...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Kata hubung DAN membentuk Konjungsi.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Konjungsi</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Disjungsi menggunakan kata ATAU.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Disjungsi</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Implikasi menggunakan JIKA... MAKA...')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Implikasi</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Biimplikasi menggunakan JIKA DAN HANYA JIKA.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. Biimplikasi</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+              <div class="p-3 bg-slate-800/80 rounded-lg border border-slate-700 text-xs sm:text-sm">
+                <p class="font-medium text-slate-200 mb-2">Soal 2: Konjungsi P ∧ Q bernilai BENAR hanya ketika...</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button type="button" onclick="cekJawaban(this, true, 'Benar! Konjungsi hanya bernilai benar jika kedua komponennya benar.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">A. Kedua pernyataan P dan Q bernilai benar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Jika salah satu salah maka konjungsi bernilai salah.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">B. Salah satu pernyataan bernilai benar</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Kedua bernilai salah menghasilkan nilai salah.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">C. Kedua pernyataan bernilai salah</button>
+                  <button type="button" onclick="cekJawaban(this, false, 'Salah! Nilai P tidak menentukan sendiri.')" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 rounded-lg text-left transition">D. P benar dan Q salah</button>
+                </div>
+                <p class="feedback-text text-xs mt-2 hidden font-medium"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </main>
+
+  <div id="wadah-modals"></div>
+  
+  <footer class="bg-slate-900 border-t border-slate-800 py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-500">
+      <p>© 2026 BimbelKu Interaktif. Dibuat untuk pendidikan Indonesia yang inklusif.</p>
+    </div>
+  </footer>
+
+  <script src="menu.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
